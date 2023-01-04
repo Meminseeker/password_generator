@@ -2,36 +2,36 @@
 #include <stdlib.h>
 #include <time.h>
 
-int range;
+#define LETTER_RANGE 26
+#define NUMBER_RANGE 10
+#define SYMBOL_RANGE sizeof(symbols)
+#define CHAR_SPEC (rand() % password_specs)
+
 char symbols [] = {'!', '@', '#', '$', '&', '*', '?'};
-int char_type;
+//int char_spec;
 
 
-char random_letter() {
-    range = 26;
-    return 'a' + rand() % range;
+inline char random_letter() {
+    return 'a' + rand() % LETTER_RANGE;
 }
 
-char random_LETTER() {
-    range = 26;
-    return 'A' + rand() % range;
+inline char random_LETTER() {
+    return 'A' + rand() % LETTER_RANGE;
 }
 
-char random_number() {
-    range = 10;
-    return '0' + rand() % range;
+inline char random_number() {
+    return '0' + rand() % NUMBER_RANGE;
 }
 
-char random_symbol() {
-    range = sizeof(symbols);
-    return symbols[rand() % range];
+inline char random_symbol() {
+    return symbols[rand() % SYMBOL_RANGE];
 }
 
 void password_generator(int n, int password_specs) {
     for (int i = 0; i < n; i++) {
-        char_type = rand() % password_specs; // randomly decide for the character type (i.e. lowercase letter, number, etc.)
+        //char_spec = rand() % password_specs; // randomly decide for the character type (i.e. lowercase letter, number, etc.)
 
-        switch (char_type) {
+        switch (CHAR_SPEC) {
             case 0:
                 printf("%c", random_letter());
                 break;
